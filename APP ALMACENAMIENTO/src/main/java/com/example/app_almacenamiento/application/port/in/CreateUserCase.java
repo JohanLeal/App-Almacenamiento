@@ -4,5 +4,5 @@ import com.example.app_almacenamiento.domain.model.User;
 
 public interface CreateUserCase {
 
-    User createUser(User user);
+    void createUser(User user);
 }

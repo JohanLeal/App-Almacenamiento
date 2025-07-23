@@ -1,4 +1,4 @@
-package com.example.app_almacenamiento.infraestructure.persistance;
+package com.example.app_almacenamiento.infraestructure.out.persistance.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,8 +1,12 @@
-package com.example.app_almacenamiento.application.dto.response;
+package com.example.app_almacenamiento.domain.dto.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Builder
 public class StatusResponse {

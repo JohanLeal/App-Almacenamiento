@@ -1,18 +1,18 @@
-package com.example.app_almacenamiento.infraestructure.persistance;
+package com.example.app_almacenamiento.infraestructure.out.persistance.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @Data
 @Builder
-public final class UserEntity extends RegisterData {
+public final class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,7 @@ public final class UserEntity extends RegisterData {
     private final String email;
     private final String password;
     private final LocalDate birthDate;
+
+    private final LocalDateTime createDate;
+    private final LocalDateTime updateDate;
 }

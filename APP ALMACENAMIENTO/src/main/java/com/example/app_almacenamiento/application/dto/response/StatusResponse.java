@@ -10,6 +10,4 @@ public class StatusResponse {
     private String url;
     private String code;
     private String message;
-
-
 }

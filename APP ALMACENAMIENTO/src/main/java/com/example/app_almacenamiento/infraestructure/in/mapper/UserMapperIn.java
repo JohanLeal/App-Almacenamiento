@@ -12,6 +12,7 @@ public class UserMapperIn {
                 .firstName(userRequest.firstname())
                 .lastName(userRequest.lastName())
                 .email(userRequest.email())
+                .username(userRequest.username())
                 .password(userRequest.password())
                 .dni(userRequest.dni())
                 .birthDate(userRequest.birthDate())

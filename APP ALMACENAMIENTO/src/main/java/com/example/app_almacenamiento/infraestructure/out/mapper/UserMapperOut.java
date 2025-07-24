@@ -16,17 +16,24 @@ public class UserMapperOut {
         this.passwordEncoder = passwordEncoder;
     }
 
-
     public UserEntity createUserMapper(User user){
         return UserEntity.builder()
                 .dni(user.dni())
                 .firstName(user.firstName())
                 .lastName(user.lastName())
                 .email(user.email())
+                .username(user.username())
                 .password(passwordEncoder.encode(user.password()))
                 .birthDate(user.birthDate())
                 .createDate(LocalDateTime.now())
                 .updateDate(LocalDateTime.now())
+                .build();
+    }
+
+    public User getUserByUsername(UserEntity user){
+        return User.builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
                 .build();
     }
 }

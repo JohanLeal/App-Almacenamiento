@@ -1,13 +1,12 @@
 package com.example.app_almacenamiento.infraestructure.in.controller;
 
 import com.example.app_almacenamiento.application.port.in.CreateUserCase;
+import com.example.app_almacenamiento.application.port.in.LoginUserCase;
+import com.example.app_almacenamiento.domain.dto.response.LoginResponse;
 import com.example.app_almacenamiento.domain.dto.response.StatusResponse;
+import com.example.app_almacenamiento.infraestructure.in.dto.request.UserLogin;
 import com.example.app_almacenamiento.infraestructure.in.dto.request.UserRequest;
-import com.example.app_almacenamiento.infraestructure.in.mapper.UserMapperIn;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -15,16 +14,20 @@ public class UserController {
 
     private final CreateUserCase createUserCase;
 
-    private final UserMapperIn userMapper;
+    private final LoginUserCase loginUserCase;
 
-    public UserController(CreateUserCase createUserCase, UserMapperIn userMapper) {
+    public UserController(CreateUserCase createUserCase, LoginUserCase loginUserCase) {
         this.createUserCase = createUserCase;
-        this.userMapper = userMapper;
+        this.loginUserCase = loginUserCase;
     }
 
     @PostMapping
     public StatusResponse createUser(@RequestBody UserRequest userRequest) {
-        createUserCase.createUser(userMapper.createUserMapper(userRequest));
-        return StatusResponse.builder().code("200").message("New user created").build();
+        return createUserCase.createUser(userRequest);
+    }
+
+    @GetMapping("/login")
+    public LoginResponse loginUser(@RequestBody UserLogin userLogin) {
+        return loginUserCase.loginUser(userLogin);
     }
 }

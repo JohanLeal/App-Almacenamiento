@@ -7,6 +7,7 @@ public record UserRequest(
         String lastName,
         String dni,
         String email,
+        String username,
         String password,
         LocalDate birthDate
 

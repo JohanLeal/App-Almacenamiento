@@ -4,4 +4,6 @@ import com.example.app_almacenamiento.infraestructure.out.persistance.entities.U
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SpringDataUserRepository extends JpaRepository<UserEntity, Long> {
+
+    UserEntity findByUsername(String username);
 }

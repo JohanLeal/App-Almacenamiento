@@ -6,4 +6,6 @@ import com.example.app_almacenamiento.domain.model.User;
 public interface UserRepositoryPort {
 
     StatusResponse saveUser(User user);
+
+    User getUser(String username);
 }

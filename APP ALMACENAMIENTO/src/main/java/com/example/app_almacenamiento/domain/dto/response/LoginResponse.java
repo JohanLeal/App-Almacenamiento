@@ -5,12 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Builder
-public class StatusResponse {
+@AllArgsConstructor
+@NoArgsConstructor
+public class LoginResponse {
 
     private String code;
     private String message;
+    private String rol;
 }

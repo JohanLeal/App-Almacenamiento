@@ -24,4 +24,10 @@ public class JpaUserRepositoryAdapter implements UserRepositoryPort {
         springUserRepository.save(userMapper.createUserMapper(user));
         return StatusResponse.builder().code("200").message("User saved successfully!").build();
     }
+
+    @Override
+    public User getUser(String username) {
+        return userMapper.getUserByUsername(springUserRepository.findByUsername(username));
+    }
+
 }

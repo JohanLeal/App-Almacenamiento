@@ -29,6 +29,10 @@ public class UserService implements CreateUserCase, LoginUserCase {
 
     @Override
     public StatusResponse createUser(UserRequest user) {
+        User existingUser = userRepositoryPort.getUser(user.username());
+        if (existingUser != null && existingUser.username() != null) {
+            return StatusResponse.builder().code("409").message("This username already exists").build();
+        }
         userRepositoryPort.saveUser(userMapperIn.createUserMapper(user));
         return StatusResponse.builder().code("200").message("User saved successfully!").build();
     }

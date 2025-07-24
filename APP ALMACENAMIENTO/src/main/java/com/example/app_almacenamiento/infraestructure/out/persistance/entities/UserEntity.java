@@ -16,15 +16,17 @@ public final class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final Long id;
-    private final String dni;
-    private final String firstName;
-    private final String lastName;
-    private final String email;
-    private final String username;
-    private final String password;
-    private final LocalDate birthDate;
+    private Long id;
+    private String dni;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String username;
+    private String password;
+    @Column(nullable = false)
+    private String role;
+    private LocalDate birthDate;
 
-    private final LocalDateTime createDate;
-    private final LocalDateTime updateDate;
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
 }

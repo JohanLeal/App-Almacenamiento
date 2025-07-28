@@ -1,8 +1,10 @@
 package com.example.app_almacenamiento.application.service;
 
 import com.example.app_almacenamiento.application.port.in.CreateUserCase;
+import com.example.app_almacenamiento.application.port.in.GetUserCase;
 import com.example.app_almacenamiento.application.port.in.LoginUserCase;
 import com.example.app_almacenamiento.application.port.out.UserRepositoryPort;
+import com.example.app_almacenamiento.domain.dto.response.AllUsers;
 import com.example.app_almacenamiento.domain.dto.response.LoginResponse;
 import com.example.app_almacenamiento.domain.dto.response.StatusResponse;
 import com.example.app_almacenamiento.domain.model.User;
@@ -12,8 +14,10 @@ import com.example.app_almacenamiento.infraestructure.in.mapper.UserMapperIn;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class UserService implements CreateUserCase, LoginUserCase {
+public class UserService implements CreateUserCase, LoginUserCase, GetUserCase {
 
     private final UserRepositoryPort userRepositoryPort;
 
@@ -47,5 +51,10 @@ public class UserService implements CreateUserCase, LoginUserCase {
             return LoginResponse.builder().code("401").message("Wrong Password!").build();
         }
         return LoginResponse.builder().code("200").message("Welcome " + user.username() + "!").build();
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepositoryPort.getAllUsers();
     }
 }

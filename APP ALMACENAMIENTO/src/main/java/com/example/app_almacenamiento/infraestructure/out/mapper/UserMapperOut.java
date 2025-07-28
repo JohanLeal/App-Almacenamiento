@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Component
 public class UserMapperOut {
@@ -35,5 +36,15 @@ public class UserMapperOut {
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .build();
+    }
+
+    public List<User> getAllUsers(List<UserEntity> users){
+        return users.stream()
+                .map(user -> User.builder()
+                        .firstName(user.getFirstName())
+                        .email(user.getEmail())
+                        .username(user.getUsername())
+                        .build())
+                .toList();
     }
 }

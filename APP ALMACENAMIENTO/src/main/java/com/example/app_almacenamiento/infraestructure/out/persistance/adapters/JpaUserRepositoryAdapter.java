@@ -7,6 +7,8 @@ import com.example.app_almacenamiento.infraestructure.out.mapper.UserMapperOut;
 import com.example.app_almacenamiento.infraestructure.out.persistance.adapters.repositories.SpringDataUserRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class JpaUserRepositoryAdapter implements UserRepositoryPort {
 
@@ -28,6 +30,11 @@ public class JpaUserRepositoryAdapter implements UserRepositoryPort {
     @Override
     public User getUser(String username) {
         return userMapper.getUserByUsername(springUserRepository.findByUsername(username));
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userMapper.getAllUsers(springUserRepository.findAll());
     }
 
 }
